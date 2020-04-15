@@ -1,0 +1,30 @@
+<%= content_for :main do %>
+  <section class="mb-5">
+    <div class="container">
+      <div class="discount-menu d-flex align-items-center flex-column">
+        <h2 class="mb-5">Products</h2>
+        <div class="row">
+          <% cache ['store', Product.latest] do %>
+            <% @products.each do |product| %>
+              <% cache ['entry', product] do %>
+                <%= link_to product, class: "card col-lg-2", style: "width: 18rem;" do %>
+                  <% if product.img.attached? %>
+                    <img src="<%= (url_for(product.img)) %>" alt="">
+                  <% end %>
+                  <div class="card-body text-center">
+                    <h3 class="card-title text-center"><%= product.title %></h3>
+                    <%= product.description %>
+                    <div class="price">
+                      <span class="price"><%= number_to_currency(product.price) %></span>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

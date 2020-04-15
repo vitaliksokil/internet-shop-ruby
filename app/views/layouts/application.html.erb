@@ -1,15 +1,187 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Musicshop</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Musicshop</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
+<header>
+  <div class="header-info">
+    <div class="container">
+      <div class="row d-flex justify-content-between align-items-center">
+        <div class="col-lg-3 header-info-location">
+          <p>
+            <span class="dotted">Ivano-Frankivsk</span> -> <span class="underline">Chornovola</span>
+          </p>
+        </div>
+        <div class="col-lg-3">
+          <p>
+            <span>Phone: </span> +380 98 1234 567
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <nav>
+            <ul class="d-flex justify-content-end">
+              <li><a href="">About</a></li>
+              <li><a href="">How to buy</a></li>
+              <li>
+                <a href="#" class="hover-off"><span class="dotted">My profile</span></a>
+              </li>
+            </ul>
+
+          </nav>
+        </div>
+      </div> <!-- row-->
+
+
+    </div><!-- container-->
+  </div>
+  <div class="header-logo">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-4">
+          <%= link_to '/' do %>
+          <div class="logo">
+            <%= image_tag("logo.jpg") %>
+            <p>We are working for your talent</p>
+          </div>
+          <% end %>
+        </div>
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="input-search" placeholder="Recipient's username">
+            <div class="input-group-append">
+              <button class="btn btn-search" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="cart">
+            <button class="btn">Корзина <span>25</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-categories">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav>
+            <ul class="d-flex justify-content-between">
+              <li><a href="" class="active">Акции</a></li>
+              <li><a href="">Музыкальные инструменты</a></li>
+              <li><a href="">DJ</a></li>
+              <li><a href="">Шоу-техника</a></li>
+              <li><a href="">Студия</a></li>
+              <li><a href="">Звук</a></li>
+              <li><a href="">Свет</a></li>
+              <li><a href="">Коммутация</a></li>
+              <li><a href="">Стойки</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6">
+        <div class="visual-text">
+          <div class="visual-title">
+            <p>New music shop</p>
+            <h1>MUSIC SHOP</h1>
+          </div>
+          <div class="visual-description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci animi autem culpa cumque deserunt eius id, ipsum labore modi mollitia nihil officiis possimus qui rem repellendus tempore velit veritatis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="brands">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 ">
+        <div class="brands-items d-flex justify-content-between">
+          <div><%= image_tag('brands/aria.png') %></div>
+          <div><%= image_tag('brands/d\'addario.png') %></div>
+          <div><%= image_tag('brands/jts.png') %></div>
+          <div><%= image_tag('brands/ABK.png') %></div>
+          <div><%= image_tag('brands/Robe.png') %></div>
+          <div><%= image_tag('brands/pioneer.png') %></div>
+          <div><%= image_tag('brands/schecter.png') %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+<div class="app">
+  <div class="container">
     <%= yield :main %>
-  </body>
+  </div>
+</div>
+<hr>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="copyright">
+          <h4>&copy; 2020 Music shop</h4>
+        </div>
+        <div class="dev-info">
+          <a href="https://github.com/vitaliksokil/internet-shop-ruby">Github</a> <span></span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="store-info">
+          <div class="store-info-title">
+            <h4>
+              Shop
+            </h4>
+          </div>
+          <div class="store-info-street">
+            <p>Chornovola street</p>
+            <p><span>Phone: </span> +380 98 1234 567</p>
+            <p>We work from 10:00 to 19:00</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="pages">
+          <table>
+            <tr class="d-flex flex-wrap">
+              <!--                <td> <a href="">О компании</a></td>-->
+              <!--                <td><a href="">наша история</a></td>-->
+              <!--                <td> <a href="">благодарности</a></td>-->
+              <!--                <td> <a href="">О компании</a></td>-->
+              <!--                <td><a href="">наша история</a></td>-->
+              <!--                <td> <a href="">благодарности</a></td>-->
+              <!--                <td> <a href="">Магазины</a></td>-->
+              <!--                <td><a href="">наша история</a></td>-->
+              <!--                <td> <a href="">Контакты</a></td>-->
+              <!--                <td> <a href="">О компании</a></td>-->
+              <!--                <td><a href="">вакансии</a></td>-->
+              <!--                <td> <a href="">Производители</a></td>-->
+              <!--                <td> <a href="">О компании</a></td>-->
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
