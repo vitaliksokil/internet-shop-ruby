@@ -5,6 +5,8 @@ class Product < ApplicationRecord
   validates :title, uniqueness: true
   validate :correct_image_type
 
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
 
   private
 
@@ -18,6 +20,16 @@ class Product < ApplicationRecord
 
   def self.latest
     Product.order(:updated_at).last
+  end
+
+ # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'существуют товарные позиции')
+      throw :abort
+    end
   end
 
 end

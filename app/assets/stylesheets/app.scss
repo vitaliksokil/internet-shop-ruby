@@ -743,3 +743,24 @@ table{
     color: white;
   }
 }
+
+.img{
+  height: 300px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  img{
+    max-height: inherit;
+  }
+}
+
+.button_to{
+  input{
+    padding: 10px;
+    background: #38c172;
+    border-radius: 5px;
+    border: none;
+    color: $white
+  }
+}

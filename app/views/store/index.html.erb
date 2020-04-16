@@ -3,14 +3,16 @@
     <div class="container">
       <div class="discount-menu d-flex align-items-center flex-column">
         <h2 class="mb-5">Products</h2>
-        <div class="row">
+        <div class="row ">
           <% cache ['store', Product.latest] do %>
             <% @products.each do |product| %>
               <% cache ['entry', product] do %>
                 <%= link_to product, class: "card col-lg-2", style: "width: 18rem;" do %>
-                  <% if product.img.attached? %>
-                    <img src="<%= (url_for(product.img)) %>" alt="">
-                  <% end %>
+                  <div class="img">
+                    <% if product.img.attached? %>
+                      <img src="<%= (url_for(product.img)) %>" alt="">
+                    <% end %>
+                  </div>
                   <div class="card-body text-center">
                     <h3 class="card-title text-center"><%= product.title %></h3>
                     <%= product.description %>
