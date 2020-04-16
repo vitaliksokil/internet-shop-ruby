@@ -2,12 +2,51 @@
 
   <p id="notice"><%= notice %></p>
   <h2>Your Pragmatic Cart</h2>
-  <ul>
-    <% @cart.line_items.each do |item| %>
-      <li><%= item.product.title %></li>
-    <% end %>
-  </ul>
+  <% @cart.line_items.each do |item| %>
+  <div class="card mb-3 cart">
+    <div class="row no-gutters">
+      <div class="col-md-1 d-flex align-items-center">
+        <% if item.product.img.attached? %>
+          <img src="<%=(url_for(item.product.img)) %>" alt="" style="width: 100%">
+        <% end %>
+      </div>
+      <div class="col-md-5">
+        <div class="card-body">
+          <h5 class="card-title"><%= item.product.title %></h5>
+          <p class="card-text"><%= item.product.description %></p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-body">
+          <h5 class="card-title">Quantity &times; price:</h5>
+          <h5 class="card-text price"><%= item.quantity %> &times; <%= number_to_currency(item.product.price) %> = </h5>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-body">
+          <h5 class="card-title">Total price:</h5>
+          <h5 class="card-text price"><%= number_to_currency(item.total_price) %></h5>
+        </div>
+      </div>
 
-  <%= link_to 'Edit', edit_cart_path(@cart) %> |
-  <%= link_to 'Back', carts_path %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-9">
+      </div>
+      <div class="col-md-3">
+        <div class="card-body">
+          <h5 class="card-title">Total price: </h5>
+          <h5 class="card-text price"><%= number_to_currency(@cart.total_price) %></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%= button_to 'Empty cart', @cart, method: :delete,
+      data: { confirm: 'Are you sure?' } %>
 <% end %>
