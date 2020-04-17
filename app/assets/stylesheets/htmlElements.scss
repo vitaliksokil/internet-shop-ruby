@@ -86,7 +86,20 @@ button {
 }
 hr {
     border: 1px solid #ad9797;
+    margin: 0;
 }
 form{
     padding: 50px 0;
+}
+a{
+  &:hover{
+    text-decoration: none !important;
+  }
+}
+
+nav{
+  hr{
+    border: 1px solid $brown;
+    margin: 10px 0;
+  }
 }

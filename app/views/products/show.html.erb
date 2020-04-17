@@ -13,7 +13,7 @@
       <div class="product-info">
         <div class="title d-flex justify-content-between align-items-center mt-3 flex-wrap">
           <h2> <%= @product.title %></h2>
-          <%= button_to 'Add to Cart', line_items_path(product_id: @product) %>
+          <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %>
         </div>
         <div class="price">
           Price:

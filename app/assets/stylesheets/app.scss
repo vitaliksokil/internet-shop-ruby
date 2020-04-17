@@ -756,6 +756,7 @@ table{
 }
 
 .button_to{
+  padding: 0;
   input{
     padding: 10px;
     background: #38c172;
@@ -766,8 +767,28 @@ table{
 }
 
 .cart{
+  h2{
+    font-size: 18px;
+  }
+  h5{
+    font-size: 15px;
+  }
+  p{
+    font-size: 12px;
+  }
   img{
     max-width: 100%;
 
+  }
+}
+
+.sidebar{
+  background: $golden;
+  padding: 20px;
+  a{
+    color: $white;
+    &:hover{
+      color: $brown;
+    }
   }
 }

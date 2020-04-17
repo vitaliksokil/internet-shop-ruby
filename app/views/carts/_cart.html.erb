@@ -1,0 +1,46 @@
+<% unless cart.line_items.empty? %>
+<div class="cart" >
+  <h2>Your Shopping Cart</h2>
+
+  <div class="card mb-3 cart">
+    <div class="row no-gutters">
+      <div class="col-md-12">
+        <table class="table table-sm">
+          <thead>
+          <tr>
+
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total price</th>
+          </tr>
+          </thead>
+          <tbody>
+            <%= render(cart.line_items) %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="card mb-3 p-0">
+    <div class="row no-gutters">
+      <div class="col-sm-12 text-right">
+        <div class="card-body">
+          <h5 class="card-title m-0">Total price: <span class="price"><%= number_to_currency(cart.total_price) %></span>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%= button_to 'Empty cart', cart, method: :delete,
+                data: {confirm: 'Are you sure?'} %>
+
+</div>
+  <hr>
+
+<% end %>

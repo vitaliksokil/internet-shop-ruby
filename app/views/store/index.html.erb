@@ -7,20 +7,28 @@
           <% cache ['store', Product.latest] do %>
             <% @products.each do |product| %>
               <% cache ['entry', product] do %>
-                <%= link_to product, class: "card col-lg-2", style: "width: 18rem;" do %>
+                <div class="card col-lg-2">
+                <%= link_to product do %>
                   <div class="img">
                     <% if product.img.attached? %>
                       <img src="<%= (url_for(product.img)) %>" alt="">
                     <% end %>
                   </div>
-                  <div class="card-body text-center">
+                <% end %>
+
+                <div class="card-body text-center">
+                  <%= link_to product, style: "width: 18rem;" do %>
                     <h3 class="card-title text-center"><%= product.title %></h3>
-                    <%= product.description %>
+                  <% end %>
+
+
+                  <%= product.description %>
                     <div class="price">
                       <span class="price"><%= number_to_currency(product.price) %></span>
                     </div>
+                    <%= button_to 'Add to Cart', line_items_path(product_id: product),remote: true%>
                   </div>
-                <% end %>
+                </div>
               <% end %>
             <% end %>
           <% end %>
