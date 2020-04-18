@@ -67,14 +67,30 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  def who_bought
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:title, :description, :price, :img)
+    @product = Product.find(params[:id])
+
+    order_id = @product.line_items.order(:updated_at).last.order_id
+    @latest_order = Order.find(order_id)
+    @products = @product.line_items.where(["order_id = ?", order_id])
+
+    if stale?(@latest_order)
+      respond_to do |format|
+        format.atom
+      end
     end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def product_params
+    params.require(:product).permit(:title, :description, :price, :img)
+  end
 end

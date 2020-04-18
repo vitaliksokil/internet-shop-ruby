@@ -72,6 +72,6 @@ class LineItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def line_item_params
-      params.require(:line_item).permit(:product_id)
+      params.require(:line_item).permit(:product_id,:order_id)
     end
 end
