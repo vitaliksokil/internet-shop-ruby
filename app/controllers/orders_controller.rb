@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:new, :create]
+  before_action :set_cart
 
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authorize, only: [:new, :create]
   # GET /orders
   # GET /orders.json
   def index
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
         @order.add_order_id_to_line_items(@cart,@order.id)
         session[:cart_id] = nil
         # OrderNotifierMailer.received(@order).deliver
-        format.html { redirect_to store_url, notice: 'Thank you for your order' }
+        format.html { redirect_to store_url, notice: I18n.t('.thanks') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

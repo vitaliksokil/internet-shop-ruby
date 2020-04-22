@@ -1,38 +1,39 @@
 <%= form_with(model: order, local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h3>
-
+      <p><%=raw t('errors.template.header', count: @order.errors.count,
+             model: t('activerecord.models.order')) %>.</p>
+      <p><%= t('errors.template.body') %></p>
       <ul>
-        <% order.errors.full_messages.each do |message| %>
-          <li class="red"><%= message %></li>
+        <% order.errors.full_messages.each do |msg| %>
+          <li class="red"><%=raw msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-<h2>New order</h2>
+<h2><%= t('.legend') %></h2>
   <div class="form-group">
-    <%= form.label :name %>
+    <%= form.label :name, t('.name')  %>
     <%= form.text_field :name, size: 40,class:'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :address %>
+    <%= form.label :address,t('.address_html') %>
     <%= form.text_area :address,rows: 3, cols: 40,class:'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :email %>
+    <%= form.label :email, t('.email') %>
     <%= form.text_field :email,size: 40,class:'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :pay_type %>
+    <%= form.label :pay_type, t('.pay_type') %>
     <%= form.select :pay_type, Order::PAYMENT_TYPES,
-        prompt: 'Select a payment method' %>
+        prompt: t('.pay_prompt_html') %>
   </div>
 
   <div class="form-group">
-    <%= form.submit class: "btn btn-success"%>
+    <%= form.submit t('.submit'), class: "btn btn-success"  %>
   </div>
 <% end %>

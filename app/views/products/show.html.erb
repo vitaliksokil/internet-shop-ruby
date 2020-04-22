@@ -1,5 +1,5 @@
 <%= content_for :main do %>
-  <p id="notice"><%= notice %></p>
+<div class="container">
 
   <div class="row mt-5 mb-5">
     <div class="col-lg-6 d-flex justify-content-center">
@@ -29,7 +29,6 @@
       </div>
     </div>
   </div>
+</div>
 
-  <%= link_to 'Edit', edit_product_path(@product), class: 'a_button' %> |
-  <%= link_to 'Back', products_path , class: 'a_button' %>
 <% end %>

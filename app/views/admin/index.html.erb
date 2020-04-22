@@ -1,0 +1,5 @@
+<% content_for :main do%>
+<h3>Добро пожаловать</h3>
+Сейчас <%= Time.now %>
+У нас имеется <%= pluralize(@total_orders, "order") %>.
+<% end %>

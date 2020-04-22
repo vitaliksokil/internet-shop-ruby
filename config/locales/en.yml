@@ -30,4 +30,47 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: "MUSIC SHOP"
+      home: "Home"
+      products: "Products"
+      orders: "Orders"
+      users: "Users"
+
+  store:
+    index:
+      title_html: "Products"
+      add_html: "Add to cart"
+
+  carts:
+    cart:
+      title: "Your Cart"
+      empty: "Empty cart"
+      checkout: "Checkout"
+
+  orders:
+    form:
+      legend: "Please Enter Your Details"
+      name: "Name"
+      address_html: "Address"
+      email: "E-mail"
+      pay_type: "Pay with"
+      pay_prompt_html: "Select a payment method"
+      submit: "Place Order"
+
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: "Cannot be blank"
+        blank:  "Cannot be blank"
+
+  errors:
+    template:
+      body: "An error occured: "
+      header:
+        one: "1 error"
+        other: "%{count} errors"
+
+  thanks: "Thanks for your order"
